@@ -1,3 +1,4 @@
+<button (click)="clear()">Reset list</button>
 <div *ngIf="animals.length === 0">No animals added yet</div>
 <ul *ngIf="animals.length > 0" >
     <li *ngFor="let animal of animals">

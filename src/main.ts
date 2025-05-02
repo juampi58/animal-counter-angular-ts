@@ -1,18 +1,15 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { Component } from '@angular/core';
-
-import { AnimalFormComponent } from './animal-form.component';
-import { AnimalListComponent } from './animal-list.component';
+import { provideRouter, RouterOutlet, RouterLink } from '@angular/router';
+import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [AnimalFormComponent, AnimalListComponent],
-  template:`
-    <h1>Animal Counter</h1>
-    <app-animal-form/>
-    <app-animal-list/>
-  `
+  imports: [RouterOutlet, RouterLink],
+  templateUrl: './main.html'
 })
 class AppComponent{}
-bootstrapApplication(AppComponent);
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes)]
+});

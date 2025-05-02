@@ -6,11 +6,7 @@ import { AnimalService } from "./animal.service";
     selector: 'app-animal-form',
     standalone: true,
     imports: [FormsModule],
-    template:
-        `<form (submit)="addAnimal($event)">
-            <input [(ngModel)]="animalName" name="animal" placeholder="Enter animal name" required/>
-            <button type="submit">Add</button>
-        </form>`
+    templateUrl: './animal-form.component.html'
 })
 
 export class AnimalFormComponent{

@@ -5,12 +5,7 @@ import { AnimalService } from "./animal.service";
     selector:'app-animal-list',
     standalone: true,
     imports: [CommonModule],
-    template:
-        `<ul *ngFor="let animal of animals">
-            <li>
-                {{animal.name}}: {{animal.count}}
-            </li>
-        </ul>`
+    templateUrl: './animal-list.component.html'
 })
 
 export class AnimalListComponent{

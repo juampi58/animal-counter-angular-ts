@@ -15,6 +15,10 @@ export const routes:Routes = [
             {
                 path: '',
                 component: AnimalListComponent
+            },
+            {
+                path: ':type',
+                component: AnimalListComponent
             }
         ]
     }

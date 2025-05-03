@@ -1,7 +1,18 @@
 <button (click)="clear()">Reset list</button>
-<div *ngIf="animals.length === 0">No animals added yet</div>
+<button *ngIf="filter" [routerLink]="['/animals']">Show all</button>
+<div *ngIf="animals.length === 0">
+    <ng-container *ngIf="filter; esle noAnimals">
+        No anmilas of type "{{filter}}" found.
+    </ng-container>
+    <ng-template #noAnimals>
+        No animals added yet
+    </ng-template>
+</div>
 <ul *ngIf="animals.length > 0" >
     <li *ngFor="let animal of animals">
-        {{animal.name}}: {{animal.count}}
+        <a [routerLink]="['/animals', animal.name]">
+            {{animal.name}}
+        </a>
+        : {{animal.count}}
     </li>
 </ul>

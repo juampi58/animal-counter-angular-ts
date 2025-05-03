@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
-import { AnimalFormComponent } from "./animal-form.component";
-import { AnimalListComponent } from "./animal-list.component";
-import { HomeComponent } from "./home.component";
+import { AnimalFormComponent } from "./components/animal-form/animal-form.component";
+import { AnimalListComponent } from "./components/animal-list/animal-list.component";
+import { HomeComponent } from "./components/home/home.component";
 
 export const routes:Routes = [
     {

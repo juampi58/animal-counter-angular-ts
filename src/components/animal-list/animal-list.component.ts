@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { AnimalService } from "./animal.service";
+import { AnimalService } from "../../animal.service";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 @Component({
     selector:'app-animal-list',

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { AnimalService } from "./animal.service";
+import { AnimalService } from "../../animal.service";
 import { RouterOutlet } from "@angular/router";
 
 @Component({

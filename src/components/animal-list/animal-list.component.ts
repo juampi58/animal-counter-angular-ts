@@ -4,6 +4,8 @@ import { AnimalService } from "../../animal.service";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { MatCardModule } from '@angular/material/card';
 import { signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+
 
 @Component({
     selector:'app-animal-list',
@@ -13,6 +15,8 @@ import { signal } from '@angular/core';
 })
 
 export class AnimalListComponent implements OnInit, OnDestroy{
+    animalList = this.animalService.getAnimals$()
+    
     private intervalId: any
     seconds = signal(0)
     filter : string | null = null
@@ -36,7 +40,7 @@ export class AnimalListComponent implements OnInit, OnDestroy{
         console.log(`AnimlasListComponent  destroyed. Timer stopped`)
     }
     get animals(){
-        const all = this.animalService.getAnimals()
+        const all = this.animalList()
         return this.filter? all.filter(a=>a.name === this.filter): all
     }
     clear(){

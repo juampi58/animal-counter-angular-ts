@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { AnimalService } from "../../animal.service";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { MatCardModule } from '@angular/material/card';
+import { signal } from '@angular/core';
 
 @Component({
     selector:'app-animal-list',
@@ -13,7 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 
 export class AnimalListComponent implements OnInit, OnDestroy{
     private intervalId: any
-    private seconds: number = 0
+    seconds = signal(0)
     filter : string | null = null
     constructor(
         private animalService: AnimalService,
@@ -27,8 +28,7 @@ export class AnimalListComponent implements OnInit, OnDestroy{
         this.animalService.loadAnimalsFromFakeApi()
 
         this.intervalId = setInterval(()=>{
-            this.seconds ++
-            console.log(`animal list has bien active for ${this.seconds} seconds`)
+            this.seconds.update(n=>n+1)
         })
     }
     ngOnDestroy(): void {

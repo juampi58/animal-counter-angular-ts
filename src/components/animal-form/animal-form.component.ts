@@ -7,24 +7,30 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import './animal-form.component.css'
+import { ReactiveFormsModule, FormControl, Validators, FormGroup } from '@angular/forms';
+
 
 @Component({
     selector: 'app-animal-form',
     standalone: true,
-    imports: [FormsModule, CommonModule, RouterOutlet, MatFormFieldModule, MatInputModule, MatButtonModule],
+    imports: [FormsModule, CommonModule, RouterOutlet, MatFormFieldModule, MatInputModule, MatButtonModule,  ReactiveFormsModule],
     templateUrl: './animal-form.component.html'
 })
 
 export class AnimalFormComponent{
-    animalName=''
+    animalName= new FormControl('', {nonNullable: true, validators: [Validators.required]})
     showMessage= false
     constructor(private animalService: AnimalService){}
-
+    animalForm = new FormGroup({
+        name: this.animalName
+      });
     addAnimal(event:Event){
         event.preventDefault
-        if(this.animalName.trim()){
-            this.animalService.addAnimal(this.animalName.trim())
-            this.animalName = ''
+        if(this.animalForm.invalid) return
+        const name = this.animalName.value.trim()
+        if(name){
+            this.animalService.addAnimal(name)
+            this.animalName.setValue('')
             this.showMessage = true
             setTimeout(()=>this.showMessage=false, 2000)
         }

@@ -1,18 +1,33 @@
-<button (click)="clear()">Reset list</button>
-<button *ngIf="filter" [routerLink]="['/animals']">Show all</button>
+<div style="margin-top: 20px;">
+    <button mat-stroked-button color="warn" (click)="clear()">Reset List</button>
+</div>
+  
+  
+<div *ngIf="filter" style="margin-bottom: 10px;">
+    <button mat-stroked-button color="primary" [routerLink]="['/animals']">
+      Show All
+    </button>
+</div>
+  
+  
 <div *ngIf="animals.length === 0">
-    <ng-container *ngIf="filter; esle noAnimals">
-        No anmilas of type "{{filter}}" found.
+    <ng-container *ngIf="filter; else noAnimals">
+      <mat-card color="warn">No animals of type "{{ filter }}" found.</mat-card>
     </ng-container>
     <ng-template #noAnimals>
-        No animals added yet
+      <mat-card>No animals added yet.</mat-card>
     </ng-template>
 </div>
-<ul *ngIf="animals.length > 0" >
-    <li *ngFor="let animal of animals">
-        <a [routerLink]="['/animals', animal.name]">
-            {{animal.name}}
-        </a>
-        : {{animal.count}}
-    </li>
-</ul>
+  
+<div *ngIf="animals.length > 0">
+    <mat-card *ngFor="let animal of animals" style="margin-bottom: 12px;">
+      <mat-card-title>
+        <a [routerLink]="['/animals', animal.name]">{{ animal.name }}</a>
+      </mat-card-title>
+      <mat-card-content>
+        Count: {{ animal.count }}
+      </mat-card-content>
+    </mat-card>
+</div>
+  
+  

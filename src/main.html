@@ -1,6 +1,13 @@
-<nav>
-    <a routerLink="/">Home</a>
-    <a routerLink="/animals">Animal counter</a>
-</nav>
-<hr/>
+
+
+<mat-toolbar color="primary" style="justify-content: space-between;">
+    <span>Animal App</span>
+    <span>
+      <button mat-button routerLink="/">Home</button>
+      <button mat-button routerLink="/animals">Animal Counter</button>
+    </span>
+</mat-toolbar>
+
+<div style="padding: 20px;">
 <router-outlet></router-outlet>
+</div>

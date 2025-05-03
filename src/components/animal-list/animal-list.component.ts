@@ -2,10 +2,12 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AnimalService } from "../../animal.service";
 import { ActivatedRoute, RouterLink } from "@angular/router";
+import { MatCardModule } from '@angular/material/card';
+
 @Component({
     selector:'app-animal-list',
     standalone: true,
-    imports: [CommonModule, RouterLink],
+    imports: [CommonModule, RouterLink, MatCardModule],
     templateUrl: './animal-list.component.html'
 })
 
